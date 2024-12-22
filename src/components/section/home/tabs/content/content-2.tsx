@@ -72,7 +72,7 @@ const ContentTab2 = () => {
                     </div>
                 </div>
                 <div className="relative flex flex-col items-center gap-6">
-                    <span className="xl:bg-card-transform-1 relative block h-[546px] w-full rounded-2xl bg-content-2 bg-cover bg-center md:max-w-[358px] xl:h-[660px] xl:min-w-[526px]" />
+                    <span className="xl:bg-card-transform-2 relative block h-[546px] w-full rounded-2xl bg-content-2 bg-cover bg-center md:max-w-[358px] xl:h-[660px] xl:min-w-[526px]" />
                     <div className="left-6 flex flex-wrap gap-2 xl:absolute xl:bottom-[18px]">
                         <span className="flex w-full justify-center gap-3 rounded-full border border-[#D6D6D6] bg-white px-6 py-3 xl:w-fit xl:justify-start">
                             <TalhaIcons

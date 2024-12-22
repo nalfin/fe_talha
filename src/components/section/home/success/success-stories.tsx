@@ -3,7 +3,6 @@ import ContainerFull from '@/components/layout/container-full'
 import BtnTalha from '@/components/organism/btn-talha'
 import BtnTalhaOutline from '@/components/organism/btn-talha-outline'
 import SatisfiedClient from '@/components/organism/satisfied-client'
-import { text } from 'stream/consumers'
 import CardStories from './card'
 
 const card = {
