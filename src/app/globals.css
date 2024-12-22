@@ -2,26 +2,205 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@layer base {
+    :root {
+        --background: 0 0% 96%;
+        --foreground: 0 0% 1%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+        --primary: 240 5.9% 10%;
+        --primary-foreground: 0 0% 98%;
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 10% 3.9%;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.5rem;
+        --brand-main: 198 100% 41%;
+        --brand-main-hover: 196 90% 48%;
+    }
+    .dark {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+
+    :root {
+        --grey-300: #dddddd;
+        --grey-800: #6a6969;
+        --blue-800: #32c9fc;
+    }
+
+    .card-fx {
+        @apply transition-all duration-300 ease-in-out group-hover:duration-700;
+    }
+
+    @keyframes btn-play {
+        75%,
+        100% {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    .animate-button-play {
+        animation: btn-play 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        -webkit-animation: btn-play 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    /* TABS CSS DESKTOP */
+    .tabs {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 0 auto;
+        --indicator-offset: 0;
+        --indicator-width: 10px;
+    }
+    .tab {
+        @apply px-8 py-4 xl:p-8;
+        position: relative;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        color: #030303;
+        margin: 0;
+        background-color: #88d3f329;
+        width: 100%;
+        transition: color 300ms;
+    }
+    .tab span {
+        position: relative;
+        font-size: 18px;
+        line-height: 21.6px;
+        font-weight: 500;
+        z-index: 5;
+        white-space: nowrap;
+        /* overflow: hidden; */
+    }
+    .tab.active {
+        @apply text-white;
+    }
+    .tabs::after {
+        @apply h-full bg-brand-main;
+        position: absolute;
+        content: '';
+        width: var(--indicator-width);
+        left: var(--indicator-offset);
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        bottom: 0px;
+        z-index: 2;
+        transition:
+            left 300ms,
+            width 300ms,
+            bottom 300ms;
+    }
+
+    /* TABS CSS MOBILE */
+    .tabs-mobile {
+        @apply relative flex flex-col;
+        gap: 8px;
+        overflow-y: auto;
+        --indicator-offset: 0px;
+        --indicator-height: 0px;
+    }
+
+    .tab-mobile {
+        @apply w-full py-4;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        margin: 0;
+        background-color: #88d3f329;
+        color: #030303;
+        border: none;
+        /* text-align: left; */
+    }
+
+    .tab-mobile span {
+        width: fit-content;
+        position: relative;
+        font-size: 14px;
+        line-height: 16.8px;
+        font-weight: 600;
+        z-index: 5;
+    }
+
+    .tab-mobile.active {
+        font-weight: bold;
+        color: white;
+    }
+
+    .tabs-mobile::after {
+        @apply bg-brand-main;
+        content: '';
+        position: absolute;
+        top: var(--indicator-offset);
+        height: var(--indicator-height);
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+        transition: all 0.3s ease;
+    }
+
+    .card-transform-position {
+        @apply left-[150px] top-[89px] md:left-[360px] md:top-[112px] lg:left-[244px] xl:left-[288px] xl:top-[112px];
+    }
+    .card-transform-position-2 {
+        @apply left-[230px] top-[89px] md:left-[410px] md:top-[112px] lg:left-[284px] xl:left-[374px] xl:top-[112px];
+    }
 }
